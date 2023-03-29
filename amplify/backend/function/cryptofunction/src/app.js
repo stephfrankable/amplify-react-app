@@ -12,6 +12,8 @@ See the License for the specific language governing permissions and limitations 
 const express = require('express')
 const bodyParser = require('body-parser')
 const awsServerlessExpressMiddleware = require('aws-serverless-express/middleware')
+const axios = require('axios')
+
 
 // declare a new express app
 const app = express()
@@ -24,9 +26,6 @@ app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Headers", "*")
   next()
 });
-
-//Import axios
-const axios = require('axios')
 
 app.get('/coins', function(req,res){
   //Define base url
@@ -42,6 +41,19 @@ app.get('/coins', function(req,res){
   axios.get(apiUrl)
     .then(response => {
       res.json({ coins: response.data.data })
+    })
+    .catch(err => res.json({ error: err}))
+})
+
+//Project 3 addition
+
+app.get('/born', (req,res){
+  //Define base url
+  let bornUrl = 'https://api.github.com/users/stephfrankable'
+
+  axios.get(bornUrl)
+    .then(response => {
+      req.json({ born: response.data.data })
     })
     .catch(err => res.json({ error: err}))
 })

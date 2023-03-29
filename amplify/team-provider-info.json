@@ -15,7 +15,7 @@
       "function": {
         "cryptofunction": {
           "deploymentBucketName": "amplify-cryptoapp-dev-184628-deployment",
-          "s3Key": "amplify-builds/cryptofunction-4c65546c683977467262-build.zip"
+          "s3Key": "amplify-builds/cryptofunction-744c566c56513837656b-build.zip"
         }
       },
       "api": {
